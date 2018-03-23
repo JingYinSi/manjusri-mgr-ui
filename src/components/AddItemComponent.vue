@@ -1,9 +1,10 @@
 <template>
   <div>
     <div class="input-group">
-      <input type="text" class="input form-control" @keyup.enter="addItem" v-model="newItem" placeholder="add shopping list item">
+      <input type="text" class="input form-control" v-on:keyup.enter="addItem" v-model="newItem"
+             placeholder="add shopping list item">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" @click="addItem">Add!</button>
+        <button class="btn btn-default" type="button" v-on:click="addItem">Add!</button>
       </span>
     </div>
   </div>
@@ -21,7 +22,6 @@ export default {
   methods: {
     addItem: function () {
       var text
-
       text = this.newItem.trim()
       if (text) {
         this.items.push({

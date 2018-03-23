@@ -30,14 +30,6 @@ export default {
         {text: 'Apples', checked: false}
       ]
     }
-  },
-  methods: {
-    addItem (text) {
-      this.items.push({
-        text: text,
-        checked: false
-      })
-    }
   }
 }
 </script>
@@ -45,6 +37,6 @@ export default {
 <style>
   .container {
     width: 40%;
-    margin: 60px auto 0px auto;
+    margin: 20px auto 0px auto;
   }
 </style>
