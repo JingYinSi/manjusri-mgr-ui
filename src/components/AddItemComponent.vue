@@ -24,10 +24,7 @@ export default {
       var text
       text = this.newItem.trim()
       if (text) {
-        this.items.push({
-          text: text,
-          checked: false
-        })
+        this.$emit('add', this.newItem)
         this.newItem = ''
       }
     }

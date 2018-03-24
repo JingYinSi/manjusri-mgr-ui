@@ -1,33 +1,43 @@
 <template>
   <div id="app" class="container">
-    <h2>{{ title }}</h2>
-    <add-item-component :items="items"></add-item-component>
-    <items-component :items="items"></items-component>
-    <div class="footer">
-      <hr/>
-      <change-title-component v-model="title"></change-title-component>
+    <ul class="nav nav-tabs" role="tablist">
+      <li v-bind:class="index===0 ? 'active' : ''" v-for="(list, index) in shoppinglists" role="presentation" :key="list.id">
+        <a v-bind:href="'#' + list.id" v-bind:aria-controls="list.id" role="tab" data-toggle="tab">{{ list.title }}</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div v-bind:class="index===0 ? 'active' : ''" v-for="(list, index) in shoppinglists" v-bind:id="list.id"
+           class="tab-pane" role="tabpanel" :key="list.id">
+        <shopping-list-component v-bind:title="list.title" v-bind:items="list.items"></shopping-list-component>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import AddItemComponent from './components/AddItemComponent'
-import ItemsComponent from './components/ItemsComponent'
-import ChangeTitleComponent from './components/ChangeTitleComponent'
+import ShoppingListComponent from './components/ShoppingListComponent'
 
 export default {
-  name: 'App',
   components: {
-    AddItemComponent,
-    ItemsComponent,
-    ChangeTitleComponent
+    ShoppingListComponent
   },
   data () {
     return {
-      title: '静音寺业务管理系统',
-      items: [
-        {text: 'Bananas', checked: true},
-        {text: 'Apples', checked: false}
+      shoppinglists: [
+        {
+          id: 'groceries',
+          title: 'Groceries',
+          items: [
+            {text: 'Bananas', checked: true},
+            {text: 'Apples', checked: false}
+          ]
+        },
+        {
+          id: 'clothes',
+          title: 'Clothes',
+          items: [{text: 'black dress', checked: false},
+            {text: 'all stars', checked: false}]
+        }
       ]
     }
   }
