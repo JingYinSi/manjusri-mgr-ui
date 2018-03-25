@@ -1,19 +1,21 @@
 <template>
   <div>
     <em>Change the title of your shopping list here</em>
-    <input v-bind:value="value" v-on:input="onInput"/>
+    <label>
+      <input :value="titleVal" @input="onInput({ title: $event.target.value, id: id })"/>
+    </label>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'change-title-component',
-  props: ['value'],
-  methods: {
-    onInput: function (event) {
-      this.$emit('input', event.target.value)
-    }
-  }
+  props: ['id', 'titleVal'],
+  methods: mapActions({
+    onInput: 'changeTitle'
+  })
 }
 </script>
 
