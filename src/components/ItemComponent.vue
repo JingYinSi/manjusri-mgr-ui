@@ -9,9 +9,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'item-component',
-  props: ['item']
+  props: ['id', 'item'],
+  methods: mapActions(['updateListById']),
+  watch: {
+    'item.checked': function () {
+      this.updateListById(this.id)
+    }
+  }
 }
 </script>
 

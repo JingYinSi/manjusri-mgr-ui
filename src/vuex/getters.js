@@ -1,3 +1,5 @@
+
 export default {
-  getShoppinglists: store => store.shoppinglists
+  getSelected: state => state.selected,
+  getShoppinglists: state => state.shoppinglists
 }

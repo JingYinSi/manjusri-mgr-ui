@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <h2>{{ title }}</h2>
-    <add-item-component v-on:add="addItem"/>
-    <items-component v-bind:items="items"/>
+  <div id="list.id">
+    <add-item-component @add="addItem"/>
+    <items-component :id="list.id" :items="list.items"/>
     <div class="footer">
       <hr/>
-      <change-title-component :id="id" :titleVal="title"/>
+      <change-title-component :id="list.id" :titleVal="list.title"/>
     </div>
   </div>
 </template>
@@ -22,13 +21,14 @@ export default {
     ItemsComponent,
     ChangeTitleComponent
   },
-  props: ['id', 'title', 'items'],
+  props: ['list'],
   methods: {
     addItem (text) {
-      this.items.push({
+      this.list.items.push({
         text: text,
         checked: false
       })
+      this.$store.dispatch('updateList', this.list)
     }
   }
 }

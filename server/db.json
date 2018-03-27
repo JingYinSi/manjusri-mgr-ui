@@ -1,0 +1,28 @@
+{
+  "shoppinglists": [
+    {
+      "title": "2",
+      "items": [
+        {
+          "text": "AAAAAAAAAAAAAAA",
+          "checked": false
+        }
+      ],
+      "id": 18
+    },
+    {
+      "title": "3",
+      "items": [
+        {
+          "text": "AAAAAAAAAAAAAAAAAAAAAAAAA",
+          "checked": false
+        },
+        {
+          "text": "                 FFFFFFFFFFFFFFFF",
+          "checked": false
+        }
+      ],
+      "id": 19
+    }
+  ]
+}
