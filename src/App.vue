@@ -43,7 +43,7 @@
         <div class="sidebar-header">
           <img width="100%" src="./assets/suixi.jpg"/>
         </div>
-        <ul class="list-unstyled components">
+        <ul class="list-unstyled components pl-2">
           <li class="active">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
               <i class="fa fa-home"></i>Home
@@ -97,13 +97,42 @@
 
       <!-- Page Content Holder -->
       <div id="content">
-        <button type="button" class="btn btn-default" aria-label="Left Align">
-          <span class="fa fa-angle-left" aria-hidden="true"></span>
-        </button>
-
-        <button type="button" class="btn btn-default btn-lg">
-          <i class="fa fa-angle-right" style="font-size:36px"></i>
-        </button>
+        <div id="accordion" class="accordion">
+          <div class="card mb-0">
+            <div class="card-header collapsed" data-toggle="collapse" href="#collapseOne">
+              <a class="card-title">
+                Item 1
+              </a>
+            </div>
+            <div id="collapseOne" class="card-body collapse" data-parent="#accordion" >
+              <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              </p>
+            </div>
+            <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+              <a class="card-title">
+                Item 2
+              </a>
+            </div>
+            <div id="collapseTwo" class="card-body collapse" data-parent="#accordion" >
+              <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat
+                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+              </p>
+            </div>
+            <div class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+              <a class="card-title">
+                Item 3
+              </a>
+            </div>
+            <div id="collapseThree" class="collapse" data-parent="#accordion" >
+              <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
+                aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. samus labore sustainable VHS.
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -192,17 +221,6 @@ export default {
   }
   a[data-toggle="collapse"] {
     position: relative;
-  }
-  a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
-    content: '\e259';
-    display: block;
-    position: absolute;
-    right: 20px;
-    font-family: 'Glyphicons Halflings';
-    font-size: 0.6em;
-  }
-  a[aria-expanded="true"]::before {
-    content: '\e260';
   }
   ul ul a {
     font-size: 0.9em !important;
