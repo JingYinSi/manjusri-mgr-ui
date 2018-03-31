@@ -99,36 +99,24 @@
 
       <!-- Page Content Holder -->
       <div id="content">
-        <div class="card">
-          <div class="card-header" id="heading-example">
-            <h5 class="mb-0">
-              <a data-toggle="collapse" href="#collapse-example" aria-expanded="true" aria-controls="collapse-example">
-                <i class="fa fa-chevron-down pull-right"></i>
-                ... title
-              </a>
-            </h5>
-          </div>
-          <div id="collapse-example" class="collapse show" aria-labelledby="heading-example">
-            <div class="card-block">
-              ... content
-            </div>
-          </div>
-        </div>
+        <h1>Choppy's Restaurant</h1>
+        <ul>
+          <li><router-link to="/" exact>Home</router-link></li>
+          <li><router-link to="/menu">Menu</router-link></li>
+          <li><router-link to="/lessons">Lessons</router-link></li>
+        </ul>
+        <router-view></router-view>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Vue from 'vue'
-import BootstrapVue from 'bootstrap-vue'
 import ShoppingListTitleComponent from './components/ShoppingListTitleComponent'
 import ShoppingListComponent from './components/ShoppingListComponent'
 import store from './vuex/store'
 import {mapGetters, mapActions} from 'vuex'
 import _ from 'underscore'
-
-Vue.use(BootstrapVue)
 
 export default {
   components: {
