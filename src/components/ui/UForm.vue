@@ -2,7 +2,8 @@
   <form @submit.prevent="preventSubmit">
     <div v-for="field in config.fields" :key="field.name">
       <label>{{field.label || field.name}}</label>
-      <input :type="field.type ? field.type : 'text'" :required="field.required">
+      <input :type="field.type ? field.type : 'text'" :required="field.required"
+             v-model="$data.newItem[field.name]" />
     </div>
     <div>
       <label>Submit</label>
@@ -15,11 +16,16 @@
 export default {
   name: 'u-form',
   props: ['config'],
+  data: function () {
+    return {
+      newItem: {}
+    }
+  },
   computed: {
   },
   methods: {
     preventSubmit () {
-      console.info('fake AJAX request')
+      alert(JSON.stringify(this.newItem))
     }
   }
 }
