@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     preventSubmit () {
-      alert(JSON.stringify(this.newItem))
+      this.$emit('submited', this.newItem)
     }
   }
 }

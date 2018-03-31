@@ -6,7 +6,7 @@
       <span id="dragon" v-show="showSolution">Dragon</span>
       </transition>
     </div>
-    <u-form :config="formType"></u-form>
+    <u-form :config="formType" @submited="formSubmited"></u-form>
     <p>{{outputPrinter}}</p>
     <dialog-box command="confirmation" :cancellable="true"
       @cancel="msg = 'cancelled'"
@@ -46,6 +46,11 @@ export default {
           }
         ]
       }
+    }
+  },
+  methods: {
+    formSubmited (data) {
+      alert(JSON.stringify(data))
     }
   }
 }
