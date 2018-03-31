@@ -1,19 +1,11 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import SPA from './spa'
-import Home from './components/app/Home'
-import Lessons from './components/app/Lessons'
+import routes from './app/routes'
+import Router from './finelets/Router'
 
-Vue.use(VueRouter)
-
-const router = new VueRouter({
-  routes: [
-    { path: '/', component: Home },
-    { path: '/lessons', component: Lessons }
-  ]
-})
+const router = Router(routes)
 
 // eslint-disable-next-line no-new
 new Vue({

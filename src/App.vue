@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <a class="navbar-brand" href="#">
-        <img src="./assets/logo.png" width="30" height="30" class="d-inline-block" alt=""/>
+        <img src="app/assets/logo.png" width="30" height="30" class="d-inline-block" alt=""/>
         <span class="h3">静音寺业务管理系统</span>
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">
@@ -41,7 +41,7 @@
     <div class="wrapper">
       <nav id="sidebar">
         <div class="sidebar-header">
-          <img width="100%" src="./assets/suixi.jpg"/>
+          <img width="100%" src="app/assets/suixi.jpg"/>
         </div>
         <ul class="list-unstyled components pl-2">
           <li class="active">
@@ -112,9 +112,9 @@
 </template>
 
 <script>
-import ShoppingListTitleComponent from './components/ShoppingListTitleComponent'
-import ShoppingListComponent from './components/ShoppingListComponent'
-import store from './vuex/store'
+import ShoppingListTitleComponent from './app/components/demo/ShoppingListTitleComponent'
+import ShoppingListComponent from './app/components/demo/ShoppingListComponent'
+import store from './app/vuex/store'
 import {mapGetters, mapActions} from 'vuex'
 import _ from 'underscore'
 

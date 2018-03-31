@@ -2,8 +2,8 @@
   <div id="content">
     <h1>Choppy's Restaurant</h1>
     <ul>
-      <li><router-link to="/" exact>Home</router-link></li>
-      <li><router-link to="/lessons">Lessons</router-link></li>
+      <li><router-link :to="{name: 'Home'}" exact>Home</router-link></li>
+      <li><router-link :to="{name: 'Lessons'}">Lessons</router-link></li>
     </ul>
     <router-view></router-view>
   </div>
