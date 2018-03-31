@@ -1,9 +1,11 @@
 <template>
-  <form @submit.prevent="preventSubmit">
+  <form @submit.prevent="postSubmit">
     <div v-for="field in config.fields" :key="field.name">
       <label>{{field.label || field.name}}</label>
-      <input :type="field.type ? field.type : 'text'" :required="field.required"
+      <input v-if="!model" :type="field.type ? field.type : 'text'" :required="field.required"
              v-model="$data.newItem[field.name]" />
+      <input v-else :type="field.type ? field.type : 'text'" :required="field.required"
+             v-model="model[field.name]" />
     </div>
     <div>
       <label>Submit</label>
@@ -15,7 +17,10 @@
 <script>
 export default {
   name: 'u-form',
-  props: ['config'],
+  props: {
+    config: Object,
+    model: Object
+  },
   data: function () {
     return {
       newItem: {}
@@ -24,8 +29,10 @@ export default {
   computed: {
   },
   methods: {
-    preventSubmit () {
-      this.$emit('submited', this.newItem)
+    postSubmit () {
+      this.model
+        ? this.$emit('submitted', this.model)
+        : this.$emit('submitted', this.newItem)
     }
   }
 }

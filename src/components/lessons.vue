@@ -6,8 +6,9 @@
       <span id="dragon" v-show="showSolution">Dragon</span>
       </transition>
     </div>
-    <u-form :config="formType" @submited="formSubmited"></u-form>
-    <p>{{outputPrinter}}</p>
+    <u-form :config="formType" @submitted="formSubmited"></u-form>
+    <u-form :config="formType" :model="person" @submitted="formSubmited"></u-form>
+    <p>{{person}}</p>
     <dialog-box command="confirmation" :cancellable="true"
       @cancel="msg = 'cancelled'"
       @ok="msg = 'confirmed'">
@@ -45,6 +46,10 @@ export default {
             type: 'email'
           }
         ]
+      },
+      person: {
+        Name: 'clx',
+        Email: 'clx@gmail'
       }
     }
   },
