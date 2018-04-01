@@ -1,14 +1,30 @@
 import Home from './components/Home'
-import Lessons from './components/Lessons'
-import Lesson from './components/Lesson'
+import LessonDetailsBase from './components/LessonDetailsBase'
+import LessonDetailsStatistics from './components/LessonDetailsStatistics'
+import LessonDetails from './components/LessonDetails'
+import LessonList from './components/LessonList'
 
 export default {
   Home: {path: '/', component: Home},
   Lessons: {
     path: '/lessons',
     components: {
-      default: Lesson,
-      sidebar: Lessons
+      default: LessonList,
+      sidebar: LessonDetails
     }
+  },
+  LessonDetails: {
+    path: '/lessons/:id',
+    component: LessonDetails,
+    children: [
+      {
+        path: 'base',
+        component: LessonDetailsBase
+      },
+      {
+        path: 'statistics',
+        component: LessonDetailsStatistics
+      }
+    ]
   }
 }
