@@ -4,6 +4,7 @@ import LessonDetailsStatistics from './components/LessonDetailsStatistics'
 import LessonDetails from './components/LessonDetails'
 import LessonList from './components/LessonList'
 
+// We just name top most routes
 export default {
   Home: {path: '/', component: Home},
   Lessons: {
