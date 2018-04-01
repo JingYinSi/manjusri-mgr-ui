@@ -7,11 +7,17 @@ Vue.use(Router)
 export default (config) => {
   let routes = []
   _.mapObject(config, (val, key) => {
-    routes.push({
-      path: val.path,
-      name: key,
-      component: val.component
-    })
+    val.component
+      ? routes.push({
+        path: val.path,
+        name: key,
+        component: val.component
+      })
+      : routes.push({
+        path: val.path,
+        name: key,
+        components: val.components
+      })
   })
   return new Router({
     routes: routes
