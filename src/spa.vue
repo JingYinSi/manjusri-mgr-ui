@@ -5,7 +5,9 @@
       <li><router-link :to="{name: 'Home'}" exact>Home</router-link></li>
       <li><router-link :to="{name: 'Lessons'}">Lessons</router-link></li>
     </ul>
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -18,5 +20,11 @@ export default {
 <style scoped>
   a.router-link-active {
     background-color: gainsboro;
+  }
+  .v-enter-active, .v-leave-active {
+    transition: opacity .5s;
+  }
+  .v-enter, .v-leave-active {
+      opacity: 0
   }
 </style>
