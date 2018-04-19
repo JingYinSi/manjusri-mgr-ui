@@ -1,45 +1,53 @@
-import api from '../api/index'
-import _ from 'underscore'
+import auth from '@/app/api/auth'
+import router from '../routes'
+
+function __signUp (id, pwd) {
+  return auth.userSignUp(id, pwd)
+    .catch(err => {
+      return Promise.reject(new Error('注册失败', err))
+    })
+}
+
+function __signIn (id, pwd) {
+  return auth.userSignIn(id, pwd)
+    .catch(err => {
+      return Promise.reject(new Error('登录失败', err))
+    })
+}
+
+function __checkUser (func, commit, data) {
+  commit('setLoading', true)
+  return func(data.email, data.password)
+    .then(user => {
+      commit('setAuthState', 'resolve')
+      commit('setUser', user)
+      commit('setLoading', false)
+      commit('setError', null)
+    })
+    .catch(error => {
+      commit('setAuthState', 'reject')
+      commit('setError', error.message)
+      commit('setLoading', false)
+      return Promise.reject(error)
+    })
+}
 
 export default {
-  removePage (store, index) {
-    store.commit('removePage', index)
+  toSignIn ({commit}, data) {
+    return commit('setAuthState', 'signin')
   },
-  changeTitle (store, data) {
-    store.state.shoppinglists.forEach((list, index) => {
-      if (list.id === data.id) {
-        list.title = data.title
-        return api.updateShoppingList(list)
-          .then(response => {
-            store.commit('changeTitle', data)
-          })
-      }
-    })
+  toSignUp ({commit}, data) {
+    return commit('setAuthState', 'signup')
   },
-  populateShoppingLists (store) {
-    return api.fetchShoppingLists()
-      .then(response => {
-        store.commit('populateShoppingLists', response.data)
-      })
+  userSignIn ({commit}, data) {
+    return __checkUser(__signIn, commit, data)
   },
-  updateList (store, list) {
-    return api.updateShoppingList(list)
-      .then(response => {
-        store.commit('updateShoppingList', response.data)
-      })
+  userSignUp ({commit}, data) {
+    return __checkUser(__signUp, commit, data)
   },
-  updateListById (store, id) {
-    var list = _.findWhere(store.state.shoppinglists, {id: id})
-    return api.updateShoppingList(list)
-  },
-  createShoppingList: (store, shoppinglist) => {
-    return api.addNewShoppingList(shoppinglist).then(() => {
-      store.dispatch('populateShoppingLists')
-    })
-  },
-  deleteShoppingList: (store, id) => {
-    api.deleteShoppingList(id).then(() => {
-      store.commit('deleteShoppingList', id)
-    })
+  userSignOut ({commit}, data) {
+    commit('setAuthState', 'signout')
+    commit('setUser', null)
+    router.push({name: 'Landing'})
   }
 }

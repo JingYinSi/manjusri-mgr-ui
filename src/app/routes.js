@@ -1,35 +1,15 @@
 import Home from './components/Home'
-import LessonDetailsBase from './components/LessonDetailsBase'
-// import LessonDetailsStatistics from './components/LessonDetailsStatistics'
-import LessonDetails from './components/LessonDetails'
-import LessonList from './components/LessonList'
+import Landing from './components/Landing'
+import Signin from './components/Signin'
+import Signup from './components/Signup'
+import Router from '../finelets/Router'
 
-// TODO: 参考Issue #2
-const LessonDetailsStatistics = resolve =>
-  require(['./components/LessonDetailsStatistics.vue'], resolve)
-
-// We just name top most routes
-export default {
-  Home: {path: '/', component: Home},
-  Lessons: {
-    path: '/lessons',
-    components: {
-      default: LessonList,
-      sidebar: LessonDetails
-    }
-  },
-  LessonDetails: {
-    path: '/lessons/:id',
-    component: LessonDetails,
-    children: [
-      {
-        path: 'base',
-        component: LessonDetailsBase
-      },
-      {
-        path: 'statistics',
-        component: LessonDetailsStatistics
-      }
-    ]
-  }
+var routes = {
+  Landing: {path: '/', component: Landing, meta: { requiresAuth: false }},
+  Home: {path: '/home', component: Home, meta: { requiresAuth: true }},
+  Signin: {path: '/signin', component: Signin, meta: { requiresAuth: false }},
+  Signup: {path: '/signup', component: Signup, meta: { requiresAuth: false }}
 }
+
+var router = Router(routes)
+export default router

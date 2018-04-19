@@ -12,6 +12,7 @@ export default (config) => {
     routes.push(route)
   })
   return new Router({
+    mode: 'history',
     routes: routes
   })
 }
