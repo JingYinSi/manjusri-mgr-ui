@@ -1,5 +1,6 @@
-import auth from '@/app/api/auth'
+import authFactory from '@/app/api/auth'
 import router from '../routes'
+const auth = authFactory()
 
 function __signUp (id, pwd) {
   return auth.userSignUp(id, pwd)

@@ -14,7 +14,6 @@ const fsm = new StateMachine({
   ],
   methods: {
     onInvalidTransition: function (transition, from, to) {
-      // throw new Error('transition not allowed from that state')
     }
   }
 })
